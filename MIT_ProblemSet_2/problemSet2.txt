@@ -1,0 +1,180 @@
+//4.1
+
+int sum (const int a, const int b){
+    return a+b;
+}
+
+double sum (const double a, const double b){
+    return a+b;
+}
+
+//4.3
+
+int sum (const int num1, const int num2, const int num3) {
+    return num1+num2+num3;
+}
+
+int sum (const int num1, const int num2, const int num3, const int num4) {
+    return num1+num2+num3+num4;
+}
+
+//4.5
+int sum(const int numbers[], const int numbersLen){
+    int sum = 0;
+    for(int i = 0; i<numbersLen; ++i){
+        sum+=numbers[i];
+    }
+    return sum;
+}
+
+int main(){
+    int arr[]={1,2,3,4};
+    std::cout<<sum(arr,4);
+    return 0;
+}
+
+//4.6
+int sum(const int numbers[], const int numbersLen){
+    if(numbersLen==0){
+        return 0;
+    }
+    return numbers[0]+sum(numbers+1,numbersLen-1);
+}
+
+int main(){
+    int arr[]={1,2,3,5};
+    std::cout<<sum(arr,4);
+    return 0;
+}
+
+//5.1
+double a = rand()/(double)RAND_MAX;
+double b = rand()/(double)RAND_MAX;
+
+//5.2
+int main(){
+    int dartsInCircle=0;
+    for(int i = 0; i<n; ++i){
+        double x=rand()/(double)RAND_MAX;
+        double y=rand()/(double)RAND_MAX;
+        if(sqrt(x*x+y*y)<1){
+            ++dartsInCircle;
+        }
+    }
+    return 0;
+}
+
+//5.3
+double computePi(const int n){
+    srand (time(0));
+    int dartsInCircle = 0;
+    for(int i = 0; i<n; ++i){
+        double x=rand()/(double)RAND_MAX;
+        double y=rand()/(double)RAND_MAX;
+        if(sqrt(x*x+y*y)<1){
+            ++dartsInCircle;
+        }
+    }
+    return dartsInCircle/static_cast<double>(n)*4;
+}
+
+//6.1
+void printArray (const int arr[], const int len){
+    for(int i = 0; i<len; ++i){
+        std::cout<<arr[i];
+        if(i<len-1){
+            std::cout<<", ";
+        }
+    }
+}
+
+int main(){
+    int arr[]={1,2,3,4};
+    printArray(arr,4);
+
+    return 0;
+}
+
+//6.2
+void reverse(int numbers[], const int numbersLen){
+    for(int i=0; i<numbersLen/2; ++i){
+        int tmp = numbers[i];
+        int indexFromEnd = numbersLen-i-1;
+        numbers[i]=numbers[indexFromEnd];
+        numbers[indexFromEnd]=tmp;
+    }
+}
+
+void printArray (const int arr[], const int len){
+    for(int i = 0; i<len; ++i){
+        std::cout<<arr[i];
+        if(i<len-1){
+            std::cout<<", ";
+        }
+    }
+}
+
+int main(){
+    int arr[]={1,2,3,4};
+    reverse(arr,4);
+    printArray(arr,4);
+
+    return 0;
+}
+
+//6.3
+void transpose(const int input[][LENGTH], int output[WIDTH]){
+    for(int i = 0; i<WIDTH; ++i){
+        for(int j=0; j<LENGTH; ++J){
+            output[j][i]=input[i][j];
+        }
+    }
+}
+
+//6.5
+void reverse (int numbers [] , const int numbersLen ) {
+    for(int i = 0; i < numbersLen / 2; ++ i ) {
+	int tmp = *( numbers + i ) ;
+	int indexFromEnd = numbersLen - i - 1;
+	*( numbers + i ) = *( numbers + indexFromEnd ) ;
+	*( numbers + indexFromEnd ) = tmp ;
+    }
+}
+
+//7.1
+int stringLength(const char *str){
+    int length = 0;
+    while(*(str+length) != '\0'{
+        ++length;
+    }
+    return length;
+}
+
+//7.2
+void swap(int &x, int &y){
+    int temp = x;
+    x = y;
+    y = temp;
+}
+
+//7.3
+void swap(int *x, int *y){
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+//7.4
+void swap(int **x, int **y){
+    int *temp=*x;
+    *x = *y;
+    *y = temp;
+}
+
+int main(){
+    int x=5, y=6;
+    int *ptr1=&x, *ptr2=&y;
+    swap(&ptr1, &ptr2);
+    std::cout<<*ptr1<<" "<<*ptr2;
+    
+    return 0;
+}
