@@ -9,11 +9,11 @@ private:
     int xCordinate;
     int yCordinate;
 public:
-    Point(int x = 0, int y = 0): xCordinate{x}, yCordinate(y){}
+    Point(int x = 0, int y = 0): xCordinate(x), yCordinate(y){}
     int getX() const {return xCordinate;}
     int getY() const {return yCordinate;}
     void setX(const int x) {xCordinate = x;}
-    void setY(const int x) {xCordinate = x;}
+    void setY(const int y) {yCordinate = y;}
 };
 
 
