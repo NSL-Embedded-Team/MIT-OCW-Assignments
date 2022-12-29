@@ -1,5 +1,5 @@
-#ifndef POINT_H
-#define POINT_H
+#ifndef GEOMETRY_H
+#define GEOMETRY_H
 
 #include<cstdlib>
 #include<iostream>
@@ -63,4 +63,4 @@ public:
     Triangle(const Point& a, const Point& b, const Point& c);
     double getArea() const override;
 };
-#endif // POINT_H
+#endif // GEOMETRY_H
