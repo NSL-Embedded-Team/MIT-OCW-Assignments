@@ -52,8 +52,12 @@ double a = rand()/(double)RAND_MAX;
 double b = rand()/(double)RAND_MAX;
 
 //5.2
+#include <iostream>
+#include <cmath>
+
 int main(){
     int dartsInCircle=0;
+    int n = 10;
     for(int i = 0; i<n; ++i){
         double x=rand()/(double)RAND_MAX;
         double y=rand()/(double)RAND_MAX;
