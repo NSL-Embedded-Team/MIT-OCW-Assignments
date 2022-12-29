@@ -55,12 +55,12 @@ class Rectangle: public Polygon {
 public:
     Rectangle(const Point& a, const Point& b);
     Rectangle(const int a, const int b, const int c, const int d);
-    double getArea() const;
+    double getArea() const override;
 };
 
 class Triangle: public Polygon {
 public:
     Triangle(const Point& a, const Point& b, const Point& c);
-    double getArea() const;
+    double getArea() const override;
 };
 #endif // POINT_H
