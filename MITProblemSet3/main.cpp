@@ -1,40 +1,67 @@
-#include "geometry.h"
-#include <iostream>
+#ifndef GEOMETRY_H
+#define GEOMETRY_H
 
-void printAttributes(Polygon *p)
-{
-    std::cout<< "Polygon's Area is: " << p->getArea() << " sq. unit(s)\n\n";
-    const PointArray* pa = p->getPoints();
+#include<cstdlib>
+#include<iostream>
+#include<stdexcept>
 
-    std::cout<< "Polygon's Points are: " << '\n';
-    for(int i = 0; i < pa->getSize(); ++i) {
-        std::cout<< '(' << pa->get(i)->getX() << ", " << pa->get(i)->getY() << ")\n";
-    }
-}
+class Point {
+private:
+    int xCordinate;
+    int yCordinate;
+public:
+    Point(int x = 0, int y = 0): xCordinate(x), yCordinate(y){}
+    int getX() const {return xCordinate;}
+    int getY() const {return yCordinate;}
+    void setX(const int x) {xCordinate = x;}
+    void setY(const int y) {yCordinate = y;}
+};
 
-int main()
-{
-    std::cout<< "Enter Lower Left and Upper Right Point of a Rectangle: ";
 
-    int llx, lly, uux, uuy;
-    std::cin>>llx>>lly>>uux>>uuy;
+class PointArray {
+private:
+    int size;
+    Point * points;
+    void resize (int size);
+public:
+    PointArray();
+    PointArray(const Point points[], const int size);
+    PointArray(const PointArray& pv);
+    ~PointArray();
 
-    Point ll(llx, lly);
-    Point uu(uux, uuy);
+    void push_back(const Point& p);
+    void insert(const int position, const Point& p);
+    void remove(const int position);
+    const int getSize() const {return size;};
+    void clear();
+    Point* get(const int position);
+    const Point* get(const int position) const;
+};
 
-    Rectangle R(ll, uu);
-    printAttributes(&R);
+class Polygon {
+protected:
+    static int numPolygons;
+    PointArray points;
+public:
+    Polygon(const Point points[], const int numPoints);
+    Polygon(const PointArray& pa);
+    virtual double getArea() const = 0;
+    static int getNumPolygon() {return numPolygons;}
+    int getNumSides() const {return points.getSize();}
+    const PointArray* getPoints() const {return &points;}
+    ~Polygon() {--numPolygons;}
+};
 
-    std::cout<< "Enter 3 Co-ordinates of a Triangle: ";
-    int x1, y1, x2, y2, x3, y3;
-    std::cin>>x1>>y1>>x2>>y2>>x3>>y3;
+class Rectangle: public Polygon {
+public:
+    Rectangle(const Point& a, const Point& b);
+    Rectangle(const int a, const int b, const int c, const int d);
+    double getArea() const override;
+};
 
-    Point a(x1, y1);
-    Point b(x2, y2);
-    Point c(x3, y3);
-
-    Triangle T(a, b, c);
-    printAttributes(&T);
-
-    return 0;
-}
+class Triangle: public Polygon {
+public:
+    Triangle(const Point& a, const Point& b, const Point& c);
+    double getArea() const override;
+};
+#endif // GEOMETRY_H
