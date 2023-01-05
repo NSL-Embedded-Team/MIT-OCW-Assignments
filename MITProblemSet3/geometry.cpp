@@ -57,7 +57,7 @@ void PointArray::push_back(const Point& p)
 void PointArray::insert(const int position, const Point& p)
 {
     if(position < 0 || position > size) {
-        throw std::runtime_error("Position is out of range"); // caller have to catch the exception 
+        throw std::runtime_error("Position is out of range");
     }
     resize(size+1);
     for(int i = size - 1; i > position; --i) {
@@ -70,7 +70,7 @@ void PointArray::insert(const int position, const Point& p)
 void PointArray::remove(const int position)
 {
     if(position < 0 || position >= size) {
-        throw std::runtime_error("Invalid Position");  // caller have to catch the exception
+        throw std::runtime_error("Invalid Position");
     }
 
     for(int i = position; i <= size-2; ++i) {
